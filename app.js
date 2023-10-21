@@ -12,8 +12,12 @@ const bodyParser = require("body-parser");
 
 app.use(express.json());
 app.use(
-  cors()
+  cors({
+    origin: "https://www.ntsendan.com", // Add the allowed origin here
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  })
 );
+
 
 
 app.use('/public/uploads', express.static('public/uploads'));

@@ -44,7 +44,7 @@ const connectDatabase = async () => {
     process.exit(1);
   }
 };
-connectDatabase()
+//connectDatabase()
 // simple route
 app.get("/", (req, res) => {
   console.log(req.body);

@@ -1,5 +1,3 @@
-const https = require('https');
-const fs = require('fs');
 const express = require("express");
 const pool = require('./database')
 const mysql = require('mysql2/promise');
@@ -76,17 +74,10 @@ app.use((error, req, res, next) => {
 //app.use(ErrorHandler);
 
 
-// create server
-  const options = { 
-  key: fs.readFileSync('/etc/ssl/ntsendan/ntsendan_com.key;'),
-  cert: fs.readFileSync('/etc/ssl/ntsendan/ntsendan_com.chained.crt'),
-};
-const server = https.createServer(options, app);
-server.listen(process.env.PORT,  () => {
-  console.log(
-    `Server is running on https${process.env.PORT}`
-  );
-});
+
+app.listen(process.env.PORT, () => {
+  console.log(`App listening on port ${process.env.PORT }`)
+})
 
 // unhandled promise rejection
 process.on("unhandledRejection", (err) => {

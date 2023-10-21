@@ -10,14 +10,11 @@ const cors = require("cors");
 const fileUpload = require('express-fileupload')
 app.use(fileUpload())
 
-const listEndpoints = require('express-list-endpoints');
 const bodyParser = require("body-parser");
 
 app.use(express.json());
 app.use(
-  cors({
-    origin: 'https://www.ntsendan.com',
-  })
+  cors()
 );
 
 
@@ -81,13 +78,13 @@ app.use((error, req, res, next) => {
 
 // create server
   const options = { 
-  key: fs.readFileSync('/etc/ssl/ntsendan_com-key.pem'),
-  cert: fs.readFileSync('/etc/ssl/ntsendan_com.pem'),
+  key: fs.readFileSync('/etc/ssl/ntsendan/ntsendan_com.key;'),
+  cert: fs.readFileSync('/etc/ssl/ntsendan/ntsendan_com.chained.crt'),
 };
 const server = https.createServer(options, app);
-server.listen(process.env.PORT, process.env.IPAddress,  () => {
+server.listen(process.env.PORT,  () => {
   console.log(
-    `Server is running on https://${process.env.IPAddress}:${process.env.PORT}`
+    `Server is running on https${process.env.PORT}`
   );
 });
 

@@ -34,7 +34,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 const connectDatabase = async () => {
   try {
     const connection = await mysql.createConnection({
-      host: "127.0.0.1",
+      host: "51.254.38.237",
       port: 3306,
       user: "ntsendan_db",
       password: "XN5KFw5hiqsefiIf",
@@ -48,7 +48,7 @@ const connectDatabase = async () => {
     process.exit(1);
   }
 };
-//connectDatabase()
+connectDatabase()
 // simple route
 app.get("/", (req, res) => {
   console.log(req.body);
